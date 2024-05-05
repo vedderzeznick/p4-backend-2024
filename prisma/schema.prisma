@@ -12,3 +12,33 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+// Define the Artist model
+model Artist {
+  id        Int      @id @default(autoincrement())
+  name      String
+  bio       String?
+  country   String?
+  albums    Album[]
+}
+
+// Define the Album model
+model Album {
+  id          Int      @id @default(autoincrement())
+  title       String
+  releaseDate DateTime?
+  genre       String?
+  artistId    Int
+  artist      Artist   @relation(fields: [artistId], references: [id])
+  songs       Song[]
+}
+
+// Define the Song model
+model Song {
+  id           Int    @id @default(autoincrement())
+  title        String
+  duration     Int    // Duration in seconds
+  trackNumber  Int?
+  albumId      Int
+  album        Album  @relation(fields: [albumId], references: [id])
+}
