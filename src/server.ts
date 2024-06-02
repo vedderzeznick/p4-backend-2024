@@ -2,8 +2,8 @@ import cors from "cors";
 import express from "express";
 import morgan from "morgan";
 
-// import forumsRouter from './forums';
 import { defaultErrorHandler } from "./errors";
+import artistRouter from "./controllers/artists";
 
 const app = express();
 
@@ -11,7 +11,7 @@ app.use(cors());
 app.use(morgan("dev"));
 app.use(express.json());
 
-// app.use("/forums", forumsRouter);
+app.use("/artists", artistRouter);
 
 app.use(defaultErrorHandler);
 
