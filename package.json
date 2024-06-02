@@ -1,6 +1,6 @@
 {
   "name": "p3-data-model-2024",
-  "module": "index.ts",
+  "module": "src/server.ts",
   "type": "module",
   "scripts": {
     "dev": "bun --hot src/server.ts",
@@ -22,5 +22,8 @@
     "express": "^4.19.2",
     "morgan": "^1.10.0",
     "zod": "^3.23.8"
+  },
+  "prisma": {
+    "seed": "bun prisma/seed.ts"
   }
 }
